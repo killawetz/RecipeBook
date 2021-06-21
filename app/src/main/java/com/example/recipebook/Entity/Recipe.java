@@ -38,12 +38,12 @@ public class Recipe {
     public String description;
 
     @ColumnInfo(name = "area_name")
-    @Nullable
-    public int areaName;
+    @androidx.annotation.NonNull
+    public Integer areaName;
 
     @ColumnInfo(name = "category_name")
-    @android.support.annotation.Nullable
-    public int categoryName;
+    @androidx.annotation.NonNull
+    public Integer categoryName;
 
     @ColumnInfo(name = "image")
     public String image;

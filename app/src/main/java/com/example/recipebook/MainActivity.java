@@ -19,8 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
         RecipeDatabase recipeDatabase =
                 Room.databaseBuilder(this, RecipeDatabase.class, "recipebook.db")
-                .createFromAsset("databases/recipebook.db")
-                .build();
+                        .allowMainThreadQueries()
+                        .createFromAsset("databases/recipebook.db")
+                        .build();
 
 
         mainText.setText(recipeDatabase.areaDAO().getAllNames().get(0).name);

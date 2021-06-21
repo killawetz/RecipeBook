@@ -9,8 +9,9 @@ public class Area {
 
     @PrimaryKey
     @ColumnInfo(name = "id")
-    public int id;
+    public Integer id;
 
     @ColumnInfo(name = "name")
+    @androidx.annotation.NonNull
     public String name;
 }
