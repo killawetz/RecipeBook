@@ -15,3 +15,4 @@ public class AreaAndRecipes {
     )
     public List<Recipe> recipes;
 }
+

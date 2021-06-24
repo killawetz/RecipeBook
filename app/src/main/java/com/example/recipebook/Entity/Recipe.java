@@ -50,4 +50,6 @@ public class Recipe {
 
     @ColumnInfo(name = "youtube_link")
     public String youtubeLink;
+
+
 }

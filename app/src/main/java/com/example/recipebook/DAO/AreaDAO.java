@@ -2,6 +2,7 @@ package com.example.recipebook.DAO;
 
 import androidx.room.Dao;
 import androidx.room.Query;
+import androidx.room.Transaction;
 
 import com.example.recipebook.Entity.Area;
 
@@ -12,7 +13,8 @@ public interface AreaDAO {
     @Query("SELECT * FROM area;")
     List<Area> getAllNames();
 
-    @Query("SELECT * FROM area WHERE id = (:areaID)")
-    Area getNameById(int areaID);
+    @Query("SELECT * FROM area WHERE id = (:areaID);")
+    Area getNameByID(int areaID);
+
 
 }

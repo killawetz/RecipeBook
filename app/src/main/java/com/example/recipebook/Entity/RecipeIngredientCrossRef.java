@@ -1,5 +1,7 @@
 package com.example.recipebook.Entity;
 
+import android.support.annotation.NonNull;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -19,5 +21,6 @@ public class RecipeIngredientCrossRef {
     public Integer ingredientId;
 
     @ColumnInfo(name = "measure")
+    @NonNull
     public String measure;
 }
