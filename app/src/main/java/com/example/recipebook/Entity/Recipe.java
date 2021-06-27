@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import static androidx.room.ForeignKey.CASCADE;
@@ -31,7 +32,7 @@ public class Recipe {
 
     @ColumnInfo(name = "name")
     @androidx.annotation.NonNull
-    public String name;
+    public String recipeName;
 
     @ColumnInfo(name = "description")
     @androidx.annotation.NonNull

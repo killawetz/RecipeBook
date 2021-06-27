@@ -5,6 +5,7 @@ import androidx.room.Query;
 import androidx.room.Transaction;
 
 import com.example.recipebook.Entity.AreaAndRecipes;
+import com.example.recipebook.Entity.FullRecipe;
 import com.example.recipebook.Entity.Recipe;
 import com.example.recipebook.Entity.RecipeAndArea;
 import com.example.recipebook.Entity.RecipeWithIngredients;
@@ -18,12 +19,21 @@ public interface RecipeDAO {
 
     @Transaction
     @Query("SELECT * FROM recipe;")
-    public List<RecipeWithIngredients> getRecipeWithIngredients();
+    List<RecipeWithIngredients> getRecipeWithIngredients();
 
+    @Transaction
     @Query("SELECT * FROM recipe;")
-    public RecipeAndArea getRecipeAndArea();
+    RecipeAndArea getRecipeAndArea();
 
+    @Transaction
     @Query("SELECT area.name FROM area WHERE name = (:areaID)")
-    public String getAreaNameForCurrentRecipe(int areaID);
+    String getAreaNameForCurrentRecipe(int areaID);
+
+    @Transaction
+    @Query("select r.*, a.name as ar_name, c.name as cat_name\n" +
+            "from recipe r\n" +
+            "join area a on r.area_name = a.id\n" +
+            "join category c on r.category_name = c.id;")
+    List<FullRecipe> getFullRecipes();
 
 }
