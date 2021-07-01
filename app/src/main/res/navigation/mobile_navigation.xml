@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/recipeListFragment">
+
+    <fragment
+        android:id="@+id/recipeListFragment"
+        android:name="com.example.recipebook.Activity.ui.RecipeList.RecipeListFragment"
+        android:label="@string/title_list"
+        tools:layout="@layout/recipe_list_fragment" />
+
+    <fragment
+        android:id="@+id/searchRecipeFragment"
+        android:name="com.example.recipebook.Activity.ui.SearchRecipe.SearchRecipeFragment"
+        android:label="@string/title_search"
+        tools:layout="@layout/search_recipe_fragment" />
+
+    <fragment
+        android:id="@+id/randomRecipeFragment"
+        android:name="com.example.recipebook.Activity.ui.RandomRecipe.RandomRecipeFragment"
+        android:label="@string/title_random"
+        tools:layout="@layout/random_recipe_fragment" />
+</navigation>

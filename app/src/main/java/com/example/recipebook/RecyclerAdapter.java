@@ -33,8 +33,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recipe
     public void onBindViewHolder(RecyclerAdapter.RecipeViewHolder holder, int position) {
         FullRecipe currentRecipe = recipeList.get(position);
         holder.recipeNameTextView.setText(currentRecipe.recipeMain.recipeName);
-        holder.recipeAreaTextView.setText(String.valueOf(currentRecipe.area.name));
-        holder.recipeCategoryTextView.setText(String.valueOf(currentRecipe.category.name));
+        holder.recipeAreaTextView.setText(currentRecipe.area.name);
+        holder.recipeCategoryTextView.setText(currentRecipe.category.name);
         Picasso.get().load(currentRecipe.recipeMain.image).placeholder(R.mipmap.ic_launcher).into(holder.recipeImageView);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

@@ -1,51 +1,70 @@
 package com.example.recipebook.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
-
-import com.example.recipebook.Entity.FullRecipe;
 import com.example.recipebook.R;
-import com.example.recipebook.RecipeDatabase;
-import com.example.recipebook.RecyclerAdapter;
+import com.example.recipebook.databinding.MainActivityBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView mainText;
-    RecyclerView recyclerView;
+    private MainActivityBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.recyclerView);
+        binding = MainActivityBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        RecipeDatabase recipeDatabase =
-                Room.databaseBuilder(this, RecipeDatabase.class, "recipebook.db")
-                        .allowMainThreadQueries()
-                        .createFromAsset("databases/recipebook.db")
-                        .build();
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.recipeListFragment, R.id.searchRecipeFragment, R.id.randomRecipeFragment)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.navView, navController);
 
 
-        List<FullRecipe> recipeList = recipeDatabase.recipeDAO().getFullRecipes();
-        RecyclerAdapter.OnRecipeClickListener onRecipeClickListener = new RecyclerAdapter.OnRecipeClickListener(){
-            @Override
-            public void onRecipeClick(FullRecipe recipe, int position) {
-                Toast.makeText(MainActivity.this, "current recipe " + recipe.recipeMain.recipeName, Toast.LENGTH_SHORT).show();
-            }
-        };
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(recipeList, onRecipeClickListener);
-        recyclerView.setAdapter(recyclerAdapter);
+        //navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
     }
+
+   /* private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(MenuItem item) {
+            Fragment fragment;
+            switch (item.getItemId()) {
+                case R.id.navigation_search_item:
+                    navController.navigate(R.id.navigation_search);
+                    return true;
+                case R.id.navigation_random_item:
+                    navController.navigate(R.id.navigation_random);
+                    return true;
+                case R.id.navigation_list_item:
+                    navController.navigate(R.id.navigation_list);
+                    return true;
+            }
+            return false;
+        }
+    };*/
+
+
+    /*public void changeFragment(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.mega_container, fragment)// id вашего FrameLayout
+                .addToBackStack(null)
+                .commit();
+    }*/
+
 }

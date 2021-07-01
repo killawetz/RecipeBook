@@ -1,3 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">RecipeBook</string>
+    <string name="area_details_text">Area: %1$s</string>
+    <string name="category_details_text">Category: %1$s</string>
+    <string name="description_details_text">
+        Description: \n%1$s</string>
+    <string name="youtube_image_descr">Ссылка на YouTube</string>
+    <string name="youtube_link_text">Watch the video recipe: </string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_list">Recipes</string>
+    <string name="title_search">Search</string>
+    <string name="title_random">Random Recipe</string>
+    <string name="autocomplete_hint">Search....</string>
 </resources>
