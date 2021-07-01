@@ -10,7 +10,7 @@ public class RandomRecipeViewModel extends ViewModel {
 
     public RandomRecipeViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is random fragment");
+        mText.setValue("GET RANDOM RECIPE");
     }
 
     public LiveData<String> getText() {

@@ -28,6 +28,7 @@ import com.example.recipebook.Activity.RecipeDetailsActivity;
 import com.example.recipebook.Entity.FullRecipe;
 import com.example.recipebook.Entity.Ingredient;
 import com.example.recipebook.Entity.RecipeWithIngredients;
+import com.example.recipebook.FragmentsCommonController;
 import com.example.recipebook.ParcelFullRecipe;
 import com.example.recipebook.R;
 import com.example.recipebook.RecipeDatabase;
@@ -76,7 +77,9 @@ public class SearchRecipeFragment extends Fragment {
                 List<Ingredient> ingredientList =
                         recipeDatabase.recipeDAO().getRecipeWithIngredientsByID(recipe.recipeMain.id).get(0).ingredients;
 
-                ArrayList<String> ingredientNameList = (ArrayList<String>) getNameFromIngredientList(ingredientList);
+                ArrayList<String> ingredientNameList =
+                        (ArrayList<String>) FragmentsCommonController
+                                .getNameFromIngredientList(ingredientList);
                 ArrayList<String> measureList = (ArrayList<String>) recipeDatabase.recipeDAO().getMeasureForRecipe(recipe.recipeMain.id);
 
                 Intent intent = new Intent(requireContext(), RecipeDetailsActivity.class);
@@ -129,29 +132,24 @@ public class SearchRecipeFragment extends Fragment {
     }
 
     private List<FullRecipe>  performSearch(List<String> selectedIngredientsArray) {
-        System.out.println("SELECTED LIST " + selectedIngredientsArray);
         List<RecipeWithIngredients> allRecipesList = recipeDatabase.recipeDAO().getRecipeWithIngredients();
-        System.out.println("ALL RECIPE LIST " + allRecipesList);
+        List<String> recipeIngredientList;
         List<FullRecipe> suitableRecipes = new ArrayList<>();
         for (int i = 0; i < allRecipesList.size(); i++) {
-            if (allRecipesList.get(i).ingredients.contains(selectedIngredientsArray)) {
+            recipeIngredientList =
+                    FragmentsCommonController
+                            .getNameFromIngredientList(allRecipesList.get(i).ingredients);
+            if (recipeIngredientList.containsAll(selectedIngredientsArray)) {
                 suitableRecipes.add(
                         recipeDatabase
                                 .recipeDAO()
                                 .getFullRecipeByID(allRecipesList.get(i).recipe.id));
             }
         }
-        System.out.println(suitableRecipes);
         return suitableRecipes;
     }
 
-    private List<String> getNameFromIngredientList(List<Ingredient> ingredientList) {
-        List<String> result = new ArrayList<>();
-        for (int i = 0; i < ingredientList.size(); i++) {
-            result.add(ingredientList.get(i).name);
-        }
-        return result;
-    }
+
 
     @Override
     public void onDestroyView() {

@@ -52,7 +52,7 @@ public class CustomTokenizer implements MultiAutoCompleteTextView.Tokenizer {
                         Object.class, sp, 0);
                 return sp;
             } else {
-                return text + " | ";
+                return text + "| ";
             }
         }
     }

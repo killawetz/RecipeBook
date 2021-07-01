@@ -11,8 +11,10 @@
         android:id="@+id/searchAutoCompleteTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="15dp"
         android:hint="@string/autocomplete_hint"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:imeOptions="actionSearch"
         android:singleLine="true"
         android:textSize="20sp"
@@ -20,7 +22,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/selectedRecyclerView"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/recyclerview_item" />

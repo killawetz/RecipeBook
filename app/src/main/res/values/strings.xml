@@ -12,4 +12,5 @@
     <string name="title_search">Search</string>
     <string name="title_random">Random Recipe</string>
     <string name="autocomplete_hint">Search....</string>
+    <string name="get_random_recipe">Get random recipe</string>
 </resources>

@@ -48,4 +48,7 @@ public interface RecipeDAO {
             "join category c on r.category_name = c.id\n" +
             "WHERE r.id = (:recipeID);")
     FullRecipe getFullRecipeByID(int recipeID);
+
+    @Query("SELECT * FROM recipe ORDER BY RANDOM() LIMIT 1;")
+    FullRecipe getRandomFullRecipe();
 }

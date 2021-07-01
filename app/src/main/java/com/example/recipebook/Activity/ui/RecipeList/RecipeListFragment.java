@@ -18,6 +18,7 @@ import androidx.room.Room;
 import com.example.recipebook.Activity.RecipeDetailsActivity;
 import com.example.recipebook.Entity.FullRecipe;
 import com.example.recipebook.Entity.Ingredient;
+import com.example.recipebook.FragmentsCommonController;
 import com.example.recipebook.ParcelFullRecipe;
 import com.example.recipebook.RecipeDatabase;
 import com.example.recipebook.RecyclerAdapter;
@@ -53,7 +54,9 @@ public class RecipeListFragment extends Fragment {
                 List<Ingredient> ingredientList =
                         recipeDatabase.recipeDAO().getRecipeWithIngredientsByID(recipe.recipeMain.id).get(0).ingredients;
 
-                ArrayList<String> ingredientNameList = (ArrayList<String>) getNameFromIngredientList(ingredientList);
+                ArrayList<String> ingredientNameList =
+                        (ArrayList<String>) FragmentsCommonController
+                                .getNameFromIngredientList(ingredientList);
                 ArrayList<String> measureList = (ArrayList<String>) recipeDatabase.recipeDAO().getMeasureForRecipe(recipe.recipeMain.id);
 
                 Intent intent = new Intent(requireContext(), RecipeDetailsActivity.class);
@@ -84,14 +87,6 @@ public class RecipeListFragment extends Fragment {
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         return root;
-    }
-
-    private List<String> getNameFromIngredientList(List<Ingredient> ingredientList) {
-        List<String> result = new ArrayList<>();
-        for (int i = 0; i < ingredientList.size(); i++) {
-            result.add(ingredientList.get(i).name);
-        }
-        return result;
     }
 
 

@@ -5,12 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcel;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.recipebook.Entity.FullRecipe;
 import com.example.recipebook.ParcelFullRecipe;
 import com.example.recipebook.R;
 import com.squareup.picasso.Picasso;

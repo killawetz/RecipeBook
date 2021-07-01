@@ -6,15 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".Activity.ui.RandomRecipe.RandomRecipeFragment">
 
-    <TextView
-        android:id="@+id/text_notifications"
+    <Button
+        android:id="@+id/getRandomRecipeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="random"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="@string/get_random_recipe"
         android:textSize="20sp"
+        android:onClick="getRandomRecipe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
